@@ -1,0 +1,41 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.dream.kucassava.TabActivity">
+    <item
+        android:id="@+id/location"
+        android:orderInCategory="100"
+        android:title="location"
+        android:icon="@drawable/menu1"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/land"
+        android:orderInCategory="100"
+        android:title="land"
+        android:icon="@drawable/menu2"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/save"
+        android:orderInCategory="100"
+        android:title="SaveGrow"
+        android:icon="@drawable/menu3"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/value"
+        android:orderInCategory="100"
+        android:title="value"
+        android:icon="@drawable/menu4"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/profile"
+        android:orderInCategory="100"
+        android:title="Profile"
+        android:icon="@drawable/menu5"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/exit"
+        android:orderInCategory="100"
+        android:title="Exit"
+        android:icon="@drawable/menu6"
+        app:showAsAction="never" />
+</menu>

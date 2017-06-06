@@ -24,6 +24,10 @@
         <activity
             android:name=".Menu"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".TabActivity"
+            android:label="@string/title_activity_tab"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
