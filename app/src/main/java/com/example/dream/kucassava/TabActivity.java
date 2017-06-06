@@ -58,12 +58,11 @@ public class TabActivity extends AppCompatActivity  {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new Location());
         adapter.addFragment(new Land());
-        adapter.addFragment(Fragment.instantiate(getApplication(), Location.class.getName()));
-        adapter.addFragment(Fragment.instantiate(getApplication(), Land.class.getName()));
-        adapter.addFragment(Fragment.instantiate(getApplication(), Save.class.getName()));
-        adapter.addFragment(Fragment.instantiate(getApplication(), Value.class.getName()));
-        adapter.addFragment(Fragment.instantiate(getApplication(), Profile.class.getName()));
+        adapter.addFragment(new Save());
+        adapter.addFragment(new Value());
+        adapter.addFragment(new Profile());
         viewPager.setAdapter(adapter);
     }
 
