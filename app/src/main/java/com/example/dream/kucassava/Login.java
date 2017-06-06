@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class Login extends AppCompatActivity {
 
     TextView forgetBtn;
+    Button loginBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,15 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplication(), ForgetPassword.class));
+            }
+        });
+
+        loginBtn = (Button) findViewById(R.id.loginBtn);
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplication(), Menu.class));
+                finish();
             }
         });
     }
