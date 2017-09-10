@@ -27,11 +27,12 @@ public class TabActivity extends AppCompatActivity  {
             R.drawable.menu6
     };
     TabLayout tabLayout;
-
+    private static final String TAG = "TabActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tab);
+
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -43,6 +44,8 @@ public class TabActivity extends AppCompatActivity  {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
         setupTabIcons();
+
+
 
     }
 
@@ -63,7 +66,10 @@ public class TabActivity extends AppCompatActivity  {
         adapter.addFragment(new Save());
         adapter.addFragment(new Value());
         adapter.addFragment(new Profile());
+        adapter.addFragment(new Exit());
         viewPager.setAdapter(adapter);
+        int positionSelect = getIntent().getIntExtra("position", 0);
+        viewPager.setCurrentItem(positionSelect);
     }
 
 
@@ -81,12 +87,14 @@ public class TabActivity extends AppCompatActivity  {
 
         @Override
         public Fragment getItem(int position) {
+
             return mFragmentList.get(position);
         }
 
+
         @Override
         public int getCount() {
-            return 6;
+            return mFragmentList.size();
         }
 
         public void addFragment(Fragment fragment) {

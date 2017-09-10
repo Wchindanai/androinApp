@@ -4,10 +4,11 @@
     android:layout_height="match_parent"
     tools:context="com.example.dream.kucassava.Location">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Location" />
+        android:background="@drawable/background">
+
+    </android.support.constraint.ConstraintLayout>
 
 </FrameLayout>
