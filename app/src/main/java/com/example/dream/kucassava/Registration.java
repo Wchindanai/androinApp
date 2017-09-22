@@ -2,7 +2,6 @@ package com.example.dream.kucassava;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,8 +13,10 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Registration extends AppCompatActivity {
@@ -80,19 +81,37 @@ public class Registration extends AppCompatActivity {
     }
 
     private void registerToServer(String firtName, String lastName, String address, String tambon, String amphoe, String province, String zipcode, String email, String telNo, String gender, String idCardNo, String username, String password, String confirmPassword) {
-        String url = String.format("http://g5714450141.com/api/index.php/users/put/firstname/%s/lastname/%s/address/%s/address2/%s/city/%s/province/%s" +
-                "/zipcode/%s/email/%s/telephone_number/%s/username/%s/password/%s/password2/%s/image/1", firtName, lastName, address, amphoe, province, province, zipcode,
-                email, telNo, username, password, confirmPassword);
-        Log.d(TAG, "registerToServer: "+ url);
+        String url = "http://g5714450141.com/api/index.php/users/put";
+        RequestBody formBody = new FormBody.Builder()
+                .add("firstname", firtName)
+                .add("lastname", lastName)
+                .add("address", address)
+                .add("address2", tambon)
+                .add("city", amphoe)
+                .add("province", province)
+                .add("zipcode", zipcode)
+                .add("email", email)
+                .add("telephone_number", telNo)
+                .add("image", "1")
+                .add("username", username)
+                .add("password", password)
+                .add("password2", confirmPassword)
+                .build();
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(url)
+                .post(formBody)
                 .build();
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Toast.makeText(getApplication(), "Cannot Register", Toast.LENGTH_SHORT).show();
-                return;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplication(), "Cannot Register", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                });
             }
 
             @Override

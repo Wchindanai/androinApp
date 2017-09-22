@@ -1,6 +1,7 @@
 package com.example.dream.kucassava;
 
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -46,7 +47,8 @@ public class Profile extends Fragment {
         editProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), EditProfile.class);
+                getActivity().startActivity(intent);
             }
         });
 
