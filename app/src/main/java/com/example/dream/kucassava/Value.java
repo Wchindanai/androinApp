@@ -31,6 +31,7 @@ import okhttp3.Response;
 public class Value extends Fragment {
     private RecyclerView rv;
     private List<String> listType = new ArrayList<>();
+    private List<MarketModel> marketModelList = new ArrayList<>();
     private static final String TAG = "Value";
 
     @Override
@@ -72,9 +73,18 @@ public class Value extends Fragment {
                             JSONArray jsonArray = new JSONArray(response.body().string());
                             for(int i = 0; i < jsonArray.length(); i++){
                                 String name = jsonArray.getJSONObject(i).getString("name");
+                                JSONArray markets = jsonArray.getJSONObject(i).getJSONArray("type");
+                                for(int j = 0; j < markets.length(); j++){
+                                    String id = markets.getJSONObject(j).getString("market_id");
+                                    String marketName = markets.getJSONObject(j).getString("marketname");
+                                    String price = markets.getJSONObject(j).getString("price");
+                                    String daily = markets.getJSONObject(j).getString("daily");
+                                    MarketModel marketModel = new MarketModel(id, marketName, price, daily, i);
+                                    marketModelList.add(marketModel);
+                                }
                                 listType.add(name);
                             }
-                            ItemTypeAdapter itemAdapter = new ItemTypeAdapter(getContext(), listType);
+                            ItemTypeAdapter itemAdapter = new ItemTypeAdapter(getContext(), listType, marketModelList);
                             rv.setAdapter(itemAdapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
